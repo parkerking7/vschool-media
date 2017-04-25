@@ -1,13 +1,16 @@
 <div class="container-fluid">
-<h2 class="text-center">All Companies</h2>
-<div class="row">
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
-    <div class="col-sm-3 col-xs-6 companyBox"></div>
+<h2 class="text-center">All Companies</h2> <button class="newComp btn btn-success btn-lg">+</button>
+    <div class="row">
+    <div class="col-sm-3 col-xs-6 companyBox" ng-repeat="comp in companies[0]" ng-style="{'background-image':'url({{comp.logoUrl}})'}" >
+        <!---->
+        <button class="btn btn-success jobBtn hired" ng-click="hired(comp)">Hired: {{comp.hired}}</button>
+        <button class="btn btn-info jobBtn interview" ng-click="interviewed(comp)">Interview: {{comp.interviewed}}</button>
+        <button class="btn btn-primary jobBtn applied" ng-click="applied(comp)">Applied: {{comp.applied}}</button>
+        <div class="words">
+            <p class="company text-center">Company: {{comp.name}}</p>
+            <p class="industry text-center">Industry:{{comp.industry}}</p>
+        </div>
+    </div>
+
 </div>
 </div>

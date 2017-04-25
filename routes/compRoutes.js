@@ -35,13 +35,13 @@ companyRouter.route("/:compId")
         });
     })
     .put(function (req, res) {
-        Company.findOneAndUpdate({_id: req.params.companyId, user: req.user._id}, req.body, {new: true}, function (err, company) {
+        Company.findByIdAndUpdate(req.params.compId,req.body,{new:true}, function (err, company) {
             if (err) res.status(500).send(err);
             res.send(company);
         });
     })
     .delete(function (req, res) {
-        Company.findOneAndRemove({_id: req.params.companyId, user: req.user._id}, function (err, company) {
+        Company.findOneAndRemove({_id: req.params.id, user: req.user._id}, function (err, company) {
             if (err) res.status(500).send(err);
             res.send(company);
         })
