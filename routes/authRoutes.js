@@ -12,15 +12,15 @@ authRoutes.post("/login", function (req, res) {
         if (!user) {
             return res.status(401).send({success: false, message: "User with the provided username was not found"})
         } else if (user) {
+            user.checkPassword(req.body.password, function (err, match) {
+                if (err) throw (err);
+                if (!match) res.status(401).send({success: false, message: "Incorrect password"});
+                else {
+                    var token = jwt.sign(user.toObject(), config.secret, {expiresIn: "24h"});
+                    res.send({token: token, user: user.toObject(), success: true, message: "Here's your token!"})
+                }
 
-            if (user.password !== req.body.password) {
-                return res.status(401).send({success: false, message: "Incorrect password"})
-            } else {
-
-                var token = jwt.sign(user.toObject(), config.secret, {expiresIn: "24h"});
-
-                res.send({token: token, user: user.toObject(), success: true, message: "Here's your token!"})
-            }
+            });
         }
     });
 });

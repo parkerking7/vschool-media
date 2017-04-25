@@ -1,0 +1,23 @@
+<nav class="nvabar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button"class="navbar-toggle collapsed" data-toggle="collapse">
+                <span class="sr-only">Toggle navigations</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/" class="navbar-brand">Vschool Media</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-hide="userService.isAuthenticated()"><a href="#/login">Login</a></li>
+                <li ng-hide="userService.isAuthenticated()"><a href="#/signup">Signup</a></li>
+                <li ng-show="userService.isAuthenticated()"><a href="#/home">Home</a></li>
+                <li ng-show="userService.isAuthenticated()"><a href="#/companies">Companies</a></li>
+                <li ng-show="userService.isAuthenticated()"><a href="#/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

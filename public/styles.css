@@ -1,0 +1,12 @@
+.loginSign{
+    float:right;
+}
+.signupSign{
+    float:right;
+}
+.companyBox{
+    border: 1px solid black;
+    width:200px;
+    height:200px;
+    margin-top:15px;
+}
