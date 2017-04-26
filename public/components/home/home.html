@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<h2 class="text-center">All Companies</h2> <button class="newComp btn btn-success btn-lg">+</button>
+<h2 class="text-center">All Companies</h2> <button class="newComp btn btn-success btn-lg" ng-click="activeButton()">+</button>
     <div class="row">
     <div class="col-sm-3 col-xs-6 companyBox" ng-repeat="comp in companies[0]" ng-style="{'background-image':'url({{comp.logoUrl}})'}" >
         <!---->
@@ -14,3 +14,4 @@
 
 </div>
 </div>
+<popout></popout>

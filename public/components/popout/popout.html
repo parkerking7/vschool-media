@@ -1,0 +1,27 @@
+<div class="popout" ng-class="{'active': isActive}">
+    <div class="popout-content">
+        <div class="popout-header">
+            <span class="close"><a ng-click="close()">X</a></span>
+            <h2 class="text-center">Enter New Company</h2>
+        </div>
+        <div class="popout-body">
+            <form name="popoutForm">
+            <div class="col-sm-4 col-xs-12">
+                <input type="text" placeholder="Company Name..." ng-model="comp.name" required>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <input type="text" placeholder="Industry..." ng-model="comp.industry" required>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <input type="text" placeholder="Company Logo Url..." ng-model="comp.logoUrl" required>
+            </div>
+
+        </div>
+        <div class="popout-footer">
+            <buttton class="btn btn-default popout-btn" ng-click="addNewComp(comp)" ng-disabled="popoutForm.$invalid">Submit</buttton>
+        </div>
+        </form>
+
+    </div>
+
+    </div>

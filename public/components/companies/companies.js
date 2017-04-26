@@ -19,18 +19,33 @@ $scope.close = function(){
     $scope.hired = function(comp){
         comp.hired++;
         companyService.edit(comp._id, comp).then(function(response){
+
         });
     };
-    $scope.interviewed = function(comp){
+    $scope.interviewed = function(comp) {
         comp.interviewed++;
-        companyService.edit(comp._id, comp).then(function(response){
+        companyService.edit(comp._id, comp).then(function (response) {
+
         });
     };
-    $scope.applied = function(comp){
+
+
+
+
+    $scope.applied = function(comp) {
         comp.applied++;
-        companyService.edit(comp._id, comp).then(function(response){
+        companyService.edit(comp._id, comp).then(function (response) {
+
         });
     };
+
+    $scope.addNewComp = function(company){
+        $scope.isActive = false;
+        $scope.comp = {};
+        companyService.newCompany(company).then(function(response){
+            $scope.companies[0].push(response);
+        });
+    }
 
 
 }]);

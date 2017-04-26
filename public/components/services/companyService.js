@@ -16,6 +16,11 @@ this.getUsers = function(){
         return $http.get("http://localhost:3000/api/company/").then(function(response){
             return response.data
         })
+};
+this.newCompany = function(comp){
+    return $http.post("http://localhost:3000/api/company/", comp).then(function(response){
+        return response.data;
+    })
 }
 
 }]);

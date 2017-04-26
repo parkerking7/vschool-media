@@ -4,9 +4,20 @@ app.controller("HomeController", ["$scope","companyService", function ($scope,co
 
     $scope.companies = [];
 
-companyService.getAll().then( function(response){
-    $scope.companies.push(response);
-});
+    companyService.getAll().then(function (response) {
+        $scope.companies.push(response);
+    });
+
+
+    $scope.isActive = false;
+
+    $scope.activeButton = function(){
+        $scope.isActive = !$scope.isActive
+    };
+    $scope.close = function(){
+        $scope.isActive = false;
+    };
+
 $scope.hired = function(comp){
     comp.hired++;
     companyService.edit(comp._id, comp).then(function(response){
@@ -20,6 +31,15 @@ $scope.hired = function(comp){
     $scope.applied = function(comp){
         comp.applied++;
         companyService.edit(comp._id, comp).then(function(response){
+        });
+    };
+
+
+    $scope.addNewComp = function(company){
+        $scope.isActive = false;
+        $scope.comp = {};
+        companyService.newCompany(company).then(function(response){
+            $scope.companies[0].push(response);
         });
     };
 

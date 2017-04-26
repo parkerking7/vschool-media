@@ -3,36 +3,16 @@
 <div class="row">
     <div class="col-sm-3 col-xs-6 companyBox" ng-repeat="comp in companies[0]" ng-style="{'background-image':'url({{comp.logoUrl}})'}" >
         <!---->
-        <button class="btn btn-success jobBtn hired" ng-click="hired(comp)">Hired: {{comp.hired}}</button>
-        <button class="btn btn-info jobBtn interview"  ng-click="interviewed(comp)">Interview: {{comp.interviewed}}</button>
-        <button class="btn btn-primary jobBtn applied" ng-click="applied(comp)">Applied: {{comp.applied}}</button>
+        <button class="btn btn-success jobBtn hired " ng-click="hired(comp)" >Hired: {{comp.hired}}</button>
+        <button class="btn btn-info jobBtn interview"  ng-click="interviewed(comp)" >Interview: {{comp.interviewed}}</button>
+        <button class="btn btn-primary jobBtn applied" ng-click="applied(comp)" >Applied: {{comp.applied}}</button>
         <div class="words">
             <p class="company text-center">Company: {{comp.name}}</p>
-            <p class="industry text-center">Industry:{{comp.industry}}</p>
+            <p class="industry text-center">Industry: {{comp.industry}}</p>
         </div>
 
 </div>
 </div>
-    <div class="popout" ng-class="{'active': isActive}">
-        <div class="popout-content">
-            <div class="popout-header">
-                <span class="close"><a ng-click="close()">X</a></span>
-                <h2 class="text-center">Enter New Company</h2>
-            </div>
-            <div class="popout-body">
-                <div class="col-sm-4 col-xs-12">
-                    <input type="text" placeholder="Company Name...">
-                </div>
-                <div class="col-sm-4 col-xs-12">
-                    <input type="text" placeholder="Industry...">
-                </div>
-                <div class="col-sm-4 col-xs-12">
-                    <input type="text" placeholder="Company Logo Url...">
-                </div>
+</div>
 
-            </div>
-            <div class="popout-footer">
-                <buttton class="btn btn-default popout-btn">Submit</buttton>
-                </div>
-
-    </div>
+<popout></popout>
