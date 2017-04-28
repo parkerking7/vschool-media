@@ -5,7 +5,7 @@ app.controller("HomeController", ["$scope","companyService", function ($scope,co
     $scope.companies = [];
 
     companyService.getAll().then(function (response) {
-        $scope.companies.push(response.companies);
+        $scope.companies = (response.companies);
         $scope.userId = response.user;
     });
 

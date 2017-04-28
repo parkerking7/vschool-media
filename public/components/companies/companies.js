@@ -2,12 +2,13 @@ var app = angular.module("CompanyApp");
 
 app.controller("CompanyController", ["$scope","companyService", function ($scope, companyService) {
 
-    $scope.companies = [];
 
 
 
     companyService.getUsers().then(function(response){
-        $scope.companies.push(response);
+        console.log(response);
+        $scope.companies = response.companies;
+        $scope.user = response.user;
     });
 
     $scope.isActive = false;

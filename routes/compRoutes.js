@@ -6,7 +6,7 @@ companyRouter.route("/")
     .get(function (req, res) {
         Company.find({user: req.user._id}, function (err, companies) {
             if (err) res.status(500).send(err);
-            res.send(companies);
+            res.send({companies: companies, user:req.user});
         });
     })
     .post(function (req, res) {
