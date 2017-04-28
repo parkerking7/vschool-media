@@ -1,14 +1,14 @@
 <div class="container-fluid">
 <h2 class="text-center">All Companies</h2> <button class="newComp btn btn-success btn-lg" ng-click="activeButton()">+</button>
     <div class="row">
-    <div class="col-sm-3 col-xs-6 companyBox" ng-repeat="comp in companies[0]" ng-style="{'background-image':'url({{comp.logoUrl}})'}" >
+    <div class="col-sm-3 col-xs-6 col-lg-2 companyBox" ng-repeat="comp in companies[0]" ng-style="{'background-image':'url({{comp.logoUrl}})'}" >
         <!---->
-        <button class="btn btn-success jobBtn hired" ng-click="hired(comp)">Hired: {{comp.hired}}</button>
-        <button class="btn btn-info jobBtn interview" ng-click="interviewed(comp)">Interview: {{comp.interviewed}}</button>
-        <button class="btn btn-primary jobBtn applied" ng-click="applied(comp)">Applied: {{comp.applied}}</button>
+        <button class="btn btn-success jobBtn hired" ng-disabled="hiredBtn" ng-dblclick="hiredBtn = true" ng-click="hired(comp)">Hired: {{comp.hired}}</button>
+        <button class="btn btn-info jobBtn interview" ng-disabled="interviewBtn" ng-dblclick="interviewBtn = true" ng-click="interviewed(comp)">Interview: {{comp.interviewed}}</button>
+        <button class="btn btn-primary jobBtn applied" ng-disabled="appliedBtn" ng-dblclick="appliedBtn = true" ng-click="applied(comp)">Applied: {{comp.applied}}</button>
         <div class="words">
-            <p class="company text-center">Company: {{comp.name}}</p>
-            <p class="industry text-center">Industry:{{comp.industry}}</p>
+            <p class="company text-center">Company: {{comp.name | capitalize}}</p>
+            <p class="industry text-center">Industry: {{comp.industry | capitalize}}</p>
         </div>
     </div>
 

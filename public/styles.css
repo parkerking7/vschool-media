@@ -20,15 +20,38 @@
     margin-right:10px;
 }
 .interview{
-    margin-left:103px;
-    margin-top:-56px;
+    line-height: 12px;
+    width: 18px;
+    font-size: 8pt;
+    margin-top: 0px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+    /*margin-left:103px;*/
+    /*margin-top:-56px;*/
 }
 .hired{
-    margin-left:-14px;
+    /*margin-left:-14px;*/
+    line-height: 12px;
+    width: 18px;
+    font-size: 8pt;
+    margin-top: 0px;
+    margin-left: 2px;
+    position:absolute;
+    top:0;
+    left:0;
 }
+
 .applied{
-    margin-top:108px;
-    margin-left:45px;
+    line-height: 12px;
+    /*width: 18px;*/
+    font-size: 8pt;
+    margin-top: 0px;
+    margin-left:-15px;
+    position:absolute;
+    bottom:0;
+    width:100% !important;
 }
 .jobBtn{
     opacity: .7;
@@ -36,11 +59,14 @@
 }
 .company, .industry{
     opacity: 1 !important;
-    font-weight:500;
+    font-weight:400;
 }
 .words{
-    line-height:15px;
-    margin-top:-84px;
+    line-height: 12px;
+    margin-left:-15px;
+    position:absolute;
+    margin-top:112px;
+    width:100%;
     height:50px;
     color:black;
     border-radius: 25px;

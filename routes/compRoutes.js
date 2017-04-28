@@ -25,6 +25,13 @@ companyRouter.route("/all")
             res.send(companies);
         });
     });
+companyRouter.route("/getId")
+    .get(function (req, res) {
+        Company.find( function (err, companies) {
+            if (err) res.status(500).send(err);
+            res.send(req.user._id);
+        });
+    });
 
 companyRouter.route("/:compId")
     .get(function (req, res) {
@@ -37,11 +44,11 @@ companyRouter.route("/:compId")
     .put(function (req, res) {
         Company.findByIdAndUpdate(req.params.compId,req.body,{new:true}, function (err, company) {
             if (err) res.status(500).send(err);
-            res.send(company);
+            res.send({userId: req.user._id, company: company});
         });
     })
     .delete(function (req, res) {
-        Company.findOneAndRemove({_id: req.params.id, user: req.user._id}, function (err, company) {
+        Company.findByIdAndRemove(req.params.compId, function (err, company) {
             if (err) res.status(500).send(err);
             res.send(company);
         })

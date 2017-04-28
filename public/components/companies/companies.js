@@ -13,19 +13,56 @@ app.controller("CompanyController", ["$scope","companyService", function ($scope
     $scope.activeButton = function(){
       $scope.isActive = !$scope.isActive
     };
+
 $scope.close = function(){
   $scope.isActive = false;
 };
     $scope.hired = function(comp){
-        comp.hired++;
-        companyService.edit(comp._id, comp).then(function(response){
-
+        var found = false;
+        companyService.getId().then(function(response){
+            var user = response;
+            for(var i = 0; i < comp.hiredButton.length; i++){
+               if(comp.hiredButton[i] === response){
+                   comp.hiredButton.splice(0,1);
+                   comp.hired --;
+                   found = true;
+                   companyService.edit(comp._id, comp).then(function(response){
+                       return response;
+                       }
+                   )
+               }
+            }
+            if(found === false) {
+                comp.hired++;
+                comp.hiredButton.push(user);
+                companyService.edit(comp._id, comp).then(function(response){
+                    return response;
+                })
+            }
         });
     };
     $scope.interviewed = function(comp) {
-        comp.interviewed++;
-        companyService.edit(comp._id, comp).then(function (response) {
-
+        var found = false;
+        companyService.getId().then(function(response){
+            var user = response;
+            for(var i = 0; i < comp.interviewedButton.length; i++){
+                if(comp.interviewedButton[i] === response){
+                    comp.interviewedButton.splice(0,1);
+                    comp.interviewed --;
+                    found = true;
+                    companyService.edit(comp._id, comp).then(function(response){
+                            return response;
+                        }
+                    )
+                }
+            }
+            if(found === false) {
+                comp.interviewed++;
+                comp.interviewedButton.push(user);
+                companyService.edit(comp._id, comp).then(function(response){
+                    return response;
+                })
+            }
         });
     };
 
@@ -33,9 +70,27 @@ $scope.close = function(){
 
 
     $scope.applied = function(comp) {
-        comp.applied++;
-        companyService.edit(comp._id, comp).then(function (response) {
-
+        var found = false;
+        companyService.getId().then(function(response){
+            var user = response;
+            for(var i = 0; i < comp.appliedButton.length; i++){
+                if(comp.appliedButton[i] === response){
+                    comp.appliedButton.splice(0,1);
+                    comp.applied --;
+                    found = true;
+                    companyService.edit(comp._id, comp).then(function(response){
+                            return response;
+                        }
+                    )
+                }
+            }
+            if(found === false) {
+                comp.applied++;
+                comp.appliedButton.push(user);
+                companyService.edit(comp._id, comp).then(function(response){
+                    return response;
+                })
+            }
         });
     };
 
@@ -49,3 +104,9 @@ $scope.close = function(){
 
 
 }]);
+
+app.filter('capitalize', function() {
+    return function(input) {
+        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});

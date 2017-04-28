@@ -18,13 +18,25 @@ var companySchema = new Schema({
         type: Number,
         default:0
     },
+    appliedButton: {
+        type: Array,
+        default: [String]
+    },
     interviewed:{
         type: Number,
         default:0
     },
+    interviewedButton: {
+        type: Array,
+        default: [String]
+    },
     hired:{
         type: Number,
         default:0
+    },
+    hiredButton: {
+        type: Array,
+        default: [String]
     },
     user:{
         type: Schema.Types.ObjectId,
