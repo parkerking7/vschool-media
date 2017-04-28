@@ -2,11 +2,7 @@ var app = angular.module("CompanyApp");
 
 app.service("companyService", ["$http", function ($http) {
 
-    this.getId = function(){
-        return $http.get("api/company/getId").then(function(response){
-            return response.data
-        })
-    };
+
 
     this.getAll = function(){
         return $http.get("api/company/all").then(function(response){

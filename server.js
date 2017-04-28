@@ -8,6 +8,8 @@ var config = require("./config");
 var expressJwt = require("express-jwt");
 var port = process.env.PORT || 3000;
 
+app.use(require("morgan")("dev"));
+
 app.use(bodyParser.json());
 app.use("/api", expressJwt({secret: config.secret}));
 
