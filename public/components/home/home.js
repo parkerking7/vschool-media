@@ -2,7 +2,6 @@ var app = angular.module("CompanyApp");
 
 app.controller("HomeController", ["$scope","companyService", function ($scope,companyService) {
 
-    $scope.companies = [];
 
     companyService.getAll().then(function (response) {
         $scope.companies = (response.companies);

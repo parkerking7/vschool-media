@@ -25,7 +25,13 @@ companyRouter.route("/all")
             res.send({companies: companies, user:req.user._id});
         });
     });
-
+companyRouter.route("/search")
+    .get(function(req,res){
+      Company.find({name:req.query.name},function(err,foundCompanies){
+          if(err) res.status(500).send(err);
+          res.send(foundCompanies);
+      })
+});
 
 companyRouter.route("/:compId")
     .get(function (req, res) {

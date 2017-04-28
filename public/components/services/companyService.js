@@ -20,7 +20,14 @@ this.getUsers = function(){
         })
 };
 this.newCompany = function(comp){
+    comp.name = comp.name.toLowerCase();
     return $http.post("api/company/", comp).then(function(response){
+        return response.data;
+    })
+};
+this.search = function(name){
+    name = name.toLowerCase();
+    return $http.get("/api/company/search?name=" + name).then(function(response){
         return response.data;
     })
 }

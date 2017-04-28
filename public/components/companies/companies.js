@@ -4,12 +4,13 @@ app.controller("CompanyController", ["$scope","companyService", function ($scope
 
 
 
-
-    companyService.getUsers().then(function(response){
-        console.log(response);
+    companyService.getUsers().then(function (response) {
         $scope.companies = response.companies;
         $scope.user = response.user;
     });
+
+
+
 
     $scope.isActive = false;
 
@@ -97,7 +98,7 @@ $scope.close = function(){
         $scope.isActive = false;
         $scope.comp = {};
         companyService.newCompany(company).then(function(response){
-            $scope.companies[0].push(response);
+            $scope.companies.push(response);
         });
     }
 

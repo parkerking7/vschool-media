@@ -157,3 +157,13 @@ height:50px;
 .popout-btn{
     float:right;
 }
+.companySearch{
+    font-size:18px;
+    line-height: 18px;
+    height: 45px;
+    margin-top: 63px;
+    margin-right: 78px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
