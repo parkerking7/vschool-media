@@ -4,6 +4,8 @@ app.controller("CompanyController", ["$scope","companyService", function ($scope
 
     $scope.companies = [];
 
+
+
     companyService.getUsers().then(function(response){
         $scope.companies.push(response);
     });
@@ -17,53 +19,50 @@ app.controller("CompanyController", ["$scope","companyService", function ($scope
 $scope.close = function(){
   $scope.isActive = false;
 };
-    $scope.hired = function(comp){
+    $scope.hired = function(comp) {
         var found = false;
-        companyService.getId().then(function(response){
-            var user = response;
-            for(var i = 0; i < comp.hiredButton.length; i++){
-               if(comp.hiredButton[i] === response){
-                   comp.hiredButton.splice(0,1);
-                   comp.hired --;
-                   found = true;
-                   companyService.edit(comp._id, comp).then(function(response){
-                       return response;
-                       }
-                   )
-               }
+        var user = $scope.user;
+        for (var i = 0; i < comp.hiredButton.length; i++) {
+            if (comp.hiredButton[i] === user) {
+                comp.hiredButton.splice(0, 1);
+                comp.hired--;
+                found = true;
+                companyService.edit(comp._id, comp).then(function (response) {
+                        return response;
+                    }
+                )
             }
-            if(found === false) {
-                comp.hired++;
-                comp.hiredButton.push(user);
-                companyService.edit(comp._id, comp).then(function(response){
-                    return response;
-                })
-            }
-        });
+        }
+        if (found === false) {
+            comp.hired++;
+            comp.hiredButton.push(user);
+            companyService.edit(comp._id, comp).then(function (response) {
+                return response;
+            })
+        }
     };
+
     $scope.interviewed = function(comp) {
         var found = false;
-        companyService.getId().then(function(response){
-            var user = response;
-            for(var i = 0; i < comp.interviewedButton.length; i++){
-                if(comp.interviewedButton[i] === response){
-                    comp.interviewedButton.splice(0,1);
-                    comp.interviewed --;
-                    found = true;
-                    companyService.edit(comp._id, comp).then(function(response){
-                            return response;
-                        }
-                    )
-                }
+        var user = $scope.user;
+        for (var i = 0; i < comp.interviewedButton.length; i++) {
+            if (comp.interviewedButton[i] === user) {
+                comp.interviewedButton.splice(0, 1);
+                comp.interviewed--;
+                found = true;
+                companyService.edit(comp._id, comp).then(function (response) {
+                        return response;
+                    }
+                )
             }
-            if(found === false) {
-                comp.interviewed++;
-                comp.interviewedButton.push(user);
-                companyService.edit(comp._id, comp).then(function(response){
-                    return response;
-                })
-            }
-        });
+        }
+        if (found === false) {
+            comp.interviewed++;
+            comp.interviewedButton.push(user);
+            companyService.edit(comp._id, comp).then(function (response) {
+                return response;
+            })
+        }
     };
 
 
@@ -71,28 +70,27 @@ $scope.close = function(){
 
     $scope.applied = function(comp) {
         var found = false;
-        companyService.getId().then(function(response){
-            var user = response;
-            for(var i = 0; i < comp.appliedButton.length; i++){
-                if(comp.appliedButton[i] === response){
-                    comp.appliedButton.splice(0,1);
-                    comp.applied --;
-                    found = true;
-                    companyService.edit(comp._id, comp).then(function(response){
-                            return response;
-                        }
-                    )
-                }
+        var user = $scope.user;
+        for (var i = 0; i < comp.appliedButton.length; i++) {
+            if (comp.appliedButton[i] === user) {
+                comp.appliedButton.splice(0, 1);
+                comp.applied--;
+                found = true;
+                companyService.edit(comp._id, comp).then(function (response) {
+                        return response;
+                    }
+                )
             }
-            if(found === false) {
-                comp.applied++;
-                comp.appliedButton.push(user);
-                companyService.edit(comp._id, comp).then(function(response){
-                    return response;
-                })
-            }
-        });
+        }
+        if (found === false) {
+            comp.applied++;
+            comp.appliedButton.push(user);
+            companyService.edit(comp._id, comp).then(function (response) {
+                return response;
+            })
+        }
     };
+
 
     $scope.addNewComp = function(company){
         $scope.isActive = false;

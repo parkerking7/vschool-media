@@ -22,13 +22,10 @@ companyRouter.route("/all")
     .get(function (req, res) {
         Company.find( function (err, companies) {
             if (err) res.status(500).send(err);
-            res.send(companies);
+            res.send({companies: companies, user:req.user._id});
         });
     });
-companyRouter.route("/getId")
-    .get(function (req, res) {
-        res.send(req.user._id);
-    });
+
 
 companyRouter.route("/:compId")
     .get(function (req, res) {
