@@ -27,10 +27,7 @@ companyRouter.route("/all")
     });
 companyRouter.route("/getId")
     .get(function (req, res) {
-        Company.find( function (err, companies) {
-            if (err) res.status(500).send(err);
-            res.send(req.user._id);
-        });
+        res.send(req.user._id);
     });
 
 companyRouter.route("/:compId")
