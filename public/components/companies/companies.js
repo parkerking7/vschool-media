@@ -6,10 +6,8 @@ app.controller("CompanyController", ["$scope","companyService", function ($scope
 
     companyService.getUsers().then(function (response) {
         $scope.companies = response.companies;
-        $scope.user = response.user;
+        $scope.userId = response.user;
     });
-
-
 
 
     $scope.isActive = false;
@@ -23,46 +21,38 @@ $scope.close = function(){
 };
     $scope.hired = function(comp) {
         var found = false;
-        var user = $scope.user;
+        var name = comp.name.charAt(0).toUpperCase() + comp.name.slice(1);
+        var user = $scope.userId;
         for (var i = 0; i < comp.hiredButton.length; i++) {
             if (comp.hiredButton[i] === user) {
-                comp.hiredButton.splice(0, 1);
-                comp.hired--;
                 found = true;
-                companyService.edit(comp._id, comp).then(function (response) {
-                        return response;
-                    }
-                )
+                toastr.error("You have already stated that you have been hired at " + name);
             }
         }
         if (found === false) {
             comp.hired++;
             comp.hiredButton.push(user);
             companyService.edit(comp._id, comp).then(function (response) {
-                return response;
+                toastr.success("You have been hired at " + name);
             })
         }
     };
 
     $scope.interviewed = function(comp) {
         var found = false;
-        var user = $scope.user;
+        var name = comp.name.charAt(0).toUpperCase() + comp.name.slice(1);
+        var user = $scope.userId;
         for (var i = 0; i < comp.interviewedButton.length; i++) {
             if (comp.interviewedButton[i] === user) {
-                comp.interviewedButton.splice(0, 1);
-                comp.interviewed--;
                 found = true;
-                companyService.edit(comp._id, comp).then(function (response) {
-                        return response;
-                    }
-                )
+                toastr.error("You have already stated that you have recieved an interview at " + name);
             }
         }
         if (found === false) {
             comp.interviewed++;
             comp.interviewedButton.push(user);
             companyService.edit(comp._id, comp).then(function (response) {
-                return response;
+                toastr.success("You have been interviewed at " + name);
             })
         }
     };
@@ -72,23 +62,19 @@ $scope.close = function(){
 
     $scope.applied = function(comp) {
         var found = false;
-        var user = $scope.user;
+        var name = comp.name.charAt(0).toUpperCase() + comp.name.slice(1);
+        var user = $scope.userId;
         for (var i = 0; i < comp.appliedButton.length; i++) {
             if (comp.appliedButton[i] === user) {
-                comp.appliedButton.splice(0, 1);
-                comp.applied--;
                 found = true;
-                companyService.edit(comp._id, comp).then(function (response) {
-                        return response;
-                    }
-                )
+                toastr.error("You have already stated that you have applied at " + name);
             }
         }
         if (found === false) {
             comp.applied++;
             comp.appliedButton.push(user);
             companyService.edit(comp._id, comp).then(function (response) {
-                return response;
+                toastr.success("You have applied at " + name);
             })
         }
     };

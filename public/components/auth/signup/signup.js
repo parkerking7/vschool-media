@@ -9,8 +9,9 @@ app.controller("SignupController", ["$scope", "$location", "UserService", functi
         } else {
             UserService.signup(user).then(function (response) {
                 $location.path("/login");
+                toastr.success(`Account made successfully, Welcome ${user.name}, please log in.`);
             }, function (response) {
-                alert("There was a problem: " + response.data);
+                toastr.error("There was a problem: " + response.data);
             });
         }
     }
