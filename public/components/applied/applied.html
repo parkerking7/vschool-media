@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <h2 class="text-center">I've Applied</h2><input type="text" class="companySearch hidden-xs" ng-model="searchName" placeholder="Search Companies..."><button class="newComp btn btn-success btn-lg" ng-click="activeButton()" >+</button>
+    <div class="row">
+        <div class="col-sm-3 col-xs-6 col-lg-2 companyBox" ng-repeat="comp in companies  | filter : {name:searchName}" ng-style="{'background-image':'url({{comp.logoUrl}})'}" >
+            <!---->
+            <button class="btn btn-success jobBtn hired " ng-disabled="hiredBtn" ng-click="hired(comp)" >Hired: {{comp.hired}}</button>
+            <button class="btn btn-info jobBtn interview" ng-disabled="interviewBtn"  ng-click="interviewed(comp)" >Interview: {{comp.interviewed}}</button>
+            <button class="btn btn-primary jobBtn applied" ng-disabled="appliedBtn"  ng-click="applied(comp)" >Applied: {{comp.applied}}</button>
+            <div class="words">
+                <p class="company text-center">Company: {{comp.name | capitalize}}</p>
+                <p class="industry text-center">Industry: {{comp.industry | capitalize}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<popout></popout>

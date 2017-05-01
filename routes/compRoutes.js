@@ -32,6 +32,22 @@ companyRouter.route("/search")
           res.send(foundCompanies);
       })
 });
+companyRouter.route("/applied")
+    .get(function(req,res){
+        var returned = [];
+        Company.find(function(err, companies){
+            for(var i = 0; i < companies.length; i++){
+                for(var j = 0; j< companies[i].appliedButton.length; j++){
+                    if(companies[i].appliedButton[j] === req.user._id){
+                        returned.push(companies[i]);
+                    }
+                }
+            }
+            res.send({companies: returned, user:req.user._id});
+        });
+        // Company.find({user:req.user._id, appliedButton:})
+
+    });
 
 companyRouter.route("/:compId")
     .get(function (req, res) {

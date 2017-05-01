@@ -25,9 +25,8 @@ this.newCompany = function(comp){
         return response.data;
     })
 };
-this.search = function(name){
-    name = name.toLowerCase();
-    return $http.get("/api/company/search?name=" + name).then(function(response){
+this.getApplied = function(){
+    return $http.get("api/company/applied").then(function(response){
         return response.data;
     })
 }

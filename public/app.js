@@ -11,6 +11,10 @@ app.config(["$routeProvider", function ($routeProvider) {
             templateUrl: "components/companies/companies.html",
             controller: "CompanyController"
         })
+        .when("/applied", {
+            templateUrl: "components/applied/applied.html",
+            controller:"AppliedController"
+        })
 
 
 }]);
