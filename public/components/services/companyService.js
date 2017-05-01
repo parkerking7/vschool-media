@@ -30,5 +30,10 @@ this.getApplied = function(){
         return response.data;
     })
 }
+this.delete = function(comp){
+    return $http.delete("api/company/" + comp._id).then(function(response){
+        return response.data;
+    })
+}
 
 }]);

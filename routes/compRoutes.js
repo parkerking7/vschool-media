@@ -6,7 +6,7 @@ companyRouter.route("/")
     .get(function (req, res) {
         Company.find({user: req.user._id}, function (err, companies) {
             if (err) res.status(500).send(err);
-            res.send({companies: companies, user:req.user._id});
+            res.send({companies: companies, user:req.user});
         });
     })
     .post(function (req, res) {
@@ -22,7 +22,7 @@ companyRouter.route("/all")
     .get(function (req, res) {
         Company.find( function (err, companies) {
             if (err) res.status(500).send(err);
-            res.send({companies: companies, user:req.user._id});
+            res.send({companies: companies, user:req.user});
         });
     });
 companyRouter.route("/search")
@@ -43,7 +43,7 @@ companyRouter.route("/applied")
                     }
                 }
             }
-            res.send({companies: returned, user:req.user._id});
+            res.send({companies: returned, user:req.user});
         });
         // Company.find({user:req.user._id, appliedButton:})
 
@@ -60,7 +60,7 @@ companyRouter.route("/:compId")
     .put(function (req, res) {
         Company.findByIdAndUpdate(req.params.compId,req.body,{new:true}, function (err, company) {
             if (err) res.status(500).send(err);
-            res.send({userId: req.user._id, company: company});
+            res.send({userId: req.user, company: company});
         });
     })
     .delete(function (req, res) {

@@ -22,7 +22,6 @@
 .interview{
     line-height: 12px;
     width: 18px;
-    font-size: 8pt;
     margin-top: 0px;
     margin-right: 2px;
     position:absolute;
@@ -35,7 +34,6 @@
     /*margin-left:-14px;*/
     line-height: 12px;
     width: 18px;
-    font-size: 8pt;
     margin-top: 0px;
     margin-left: 2px;
     position:absolute;
@@ -46,7 +44,6 @@
 .applied{
     line-height: 12px;
     /*width: 18px;*/
-    font-size: 8pt;
     margin-top: 0px;
     margin-left:-15px;
     position:absolute;
@@ -56,6 +53,7 @@
 .jobBtn{
     opacity: .7;
     width:100px;
+    height:34px;
 }
 .company, .industry{
     opacity: 1 !important;
@@ -166,4 +164,11 @@ height:50px;
     position: absolute;
     top: 0;
     right: 0;
+}
+.delete{
+    line-height: 12px;
+    margin-left:-15px;
+    position:absolute;
+    bottom:135px;
+    width:100% !important;
 }

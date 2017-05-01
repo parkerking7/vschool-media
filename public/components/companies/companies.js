@@ -6,7 +6,8 @@ app.controller("CompanyController", ["$scope","companyService", function ($scope
 
     companyService.getUsers().then(function (response) {
         $scope.companies = response.companies;
-        $scope.userId = response.user;
+        $scope.userId = response.user._id;
+        $scope.admin = response.user.admin;
     });
 
 

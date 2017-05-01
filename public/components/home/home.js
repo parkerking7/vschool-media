@@ -4,9 +4,17 @@ app.controller("HomeController", ["$scope","companyService", function ($scope,co
 
 
     companyService.getAll().then(function (response) {
-        $scope.companies = (response.companies);
-        $scope.userId = response.user;
+        $scope.companies = response.companies;
+        $scope.userId = response.user._id;
+        $scope.admin = response.user.admin;
     });
+
+$scope.deleteButton = function(comp, $index){
+  companyService.delete(comp).then(function(response){
+      $scope.companies.splice($index,1);
+      toastr.success(`${comp.name} has been deleted`);
+  })
+};
 
 
     $scope.isActive = false;

@@ -4,7 +4,8 @@ app.controller("AppliedController", ["$scope", "companyService", function($scope
 
     companyService.getApplied().then(function (response){
         $scope.companies = response.companies;
-        $scope.userId = response.user;
+        $scope.userId = response.user._id;
+        $scope.admin = response.user.admin;
     });
 
     $scope.activeButton = function(){
